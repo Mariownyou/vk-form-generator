@@ -1,0 +1,9 @@
+@import "input.css";
+@import "button.css";
+@import "section.css";
+@import "form-control.css";
+
+.form {
+    max-width: 800px;
+    padding: 10px;
+}

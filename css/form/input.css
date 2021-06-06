@@ -1,0 +1,29 @@
+input {
+    font-size: 18px;
+    line-height: 24px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 4px 6px;    
+} 
+
+input:focus {
+    border-color: rgb(37, 135, 226);
+    outline-color: rgb(37, 135, 226);
+}
+
+select {
+    font-size: 18px;
+    line-height: 24px;
+    border-radius: 5px;
+    border: 1px solid black;
+    outline-color: rgb(37, 135, 226);
+}
+
+select:focus {
+    border-color: rgb(37, 135, 226);
+}
+
+.input[type=text],
+.input[type=email] {
+    width: 100%;
+}

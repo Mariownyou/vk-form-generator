@@ -1,0 +1,11 @@
+.section {
+    margin-bottom: 30px;
+}
+
+.section__title {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.section_submit {
+}

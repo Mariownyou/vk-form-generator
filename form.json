@@ -1,0 +1,69 @@
+{
+	"action": "url",
+	"sections": [
+		{
+            "controls": [
+                {
+                    "label": "Фамилия",
+                    "direction": "col" ,
+                    "inputs": [{"type": "text", "id": "last_name"}, {"type": "checkbox", "label": "ранее менялась", "id": "check"}]
+                },
+                {
+                    "label": "Имя",
+                    "inputs": [{"type": "text", "id": "first_name"}]
+                },
+                {
+                    "label": "Отчество",
+                    "inputs": [{"type": "text", "id": "patronymic"}]
+                }
+            ]
+		},
+        {
+			"controls": [
+                {
+                    "label": "Фамилия латиницей",
+                    "inputs": [{"type": "text", "id": "last_name_lat"}]
+                },
+                {
+                    "label": "Имя латиницей",
+                    "inputs": [{"type": "email", "id": "first_name_lat"}]
+                }
+			]	
+		},
+        {
+			"controls": [
+                {
+                    "label": "Дата рождения",
+                    "inputs": [{"type": "day", "id": "day"}, {"type": "month", "id": "month"}, {"type": "year", "id": "year"}]
+                },
+                {
+                    "label": "Семейное положение",
+                    "inputs": [{"type": "select", "id": "relationships"}]
+                },
+                {
+                    "label": "Оюразование",
+                    "inputs": [{"type": "select", "id": "education"}]
+                }
+			]	
+		},
+		{
+			"title": "Контактная информация",
+			"controls": [
+                {
+                    "label": "Моб. телефон",
+                    "inputs": [{"type": "text", "placeholder": "+7", "id": "number"}]
+                },
+                {
+                    "label": "Электронная почта",
+                    "inputs": [{"type": "email", "id": "email"}]
+                }
+			]	
+		}
+	],
+    "submit": {
+        "controls": [
+            {"type": "checkbox", "label": "ранее менялась"},
+            {"type": "button", "text": "Полететь на Марс"}
+        ]
+    }
+}

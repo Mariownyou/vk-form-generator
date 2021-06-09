@@ -63,44 +63,55 @@ export class Form {
         return el
     }
 
+    createParams(el, params) {
+        for (const [key, value] of Object.entries(params)) {
+            el[key] = value
+        }
+        return el
+    }
+
     createInput(input) {
-        let inputEl = this.createEl('input', [this.config.classes.inputs.input])
+        let inputEl = this.createEl('input', [input.overwrite ? 'none' : this.config.classes.inputs.input])
         const type = input.type
 
         inputEl.type = type
-        inputEl.id = input.id
-        inputEl.name = input.id
-        
+        if (input.params) {
+            inputEl = this.createParams(inputEl, input.params)
+        }
+
         if (input.classes) {
             inputEl.classList.add(input.classes)
         }
 
         switch(type) {
             case 'text':
-                inputEl.placeholder = input.placeholder ? input.placeholder : ''
                 break
                 
             case 'checkbox':
-                let labelEl = this.createEl('label', [this.config.classes.inputs.checkbox])
+                let labelEl = this.createEl('label', [input.overwrite ? 'none' : this.config.classes.inputs.checkbox])
                 labelEl.appendChild(inputEl)
                 labelEl.innerHTML += input.label
                 return labelEl
 
             case 'select': 
-                let selectEl = this.createEl('select', [this.config.classes.inputs.select])
+                let selectEl = this.createEl('select', [input.overwrite ? 'none' : this.config.classes.inputs.select])
                 const options = input.options ? input.options : []
-                selectEl.id = input.id
-                selectEl.name = input.id
+                if (input.params) {
+                    selectEl = this.createParams(selectEl, input.params)
+                }
 
                 options.forEach(el => {
-                    let optionEl = this.createEl('option', [this.config.classes.inputs.option])
+                    let optionEl = this.createEl('option', [input.overwrite ? 'none' : this.config.classes.inputs.option])
                     optionEl.innerText = el
                     selectEl.appendChild(optionEl)
                 })
                 return selectEl
 
             case 'button': 
-                let buttonEl = this.createEl('button', [this.config.classes.submitButton])
+                let buttonEl = this.createEl('button', [input.overwrite ? 'none' : this.config.classes.submitButton])
+                if (input.params) {
+                    buttonEl = this.createParams(buttonEl, input.params)
+                }
                 buttonEl.innerText = input.text
                 buttonEl.type = 'submit'
                 return buttonEl
@@ -109,7 +120,7 @@ export class Form {
     }
 
     createControl(control) {
-        let controlEl = this.createEl('div', [this.config.classes.formControl])
+        let controlEl = this.createEl('div', [control.overwrite ? 'none' : this.config.classes.formControl])
         let inputsEl = this.createEl('div', [this.config.classes.formControlInputs])
         let inputs = control.inputs
 
@@ -128,7 +139,7 @@ export class Form {
         }
         
         inputs.forEach(el => {
-            const input = this.createInput(el)
+            let input = this.createInput(el)
             inputsEl.appendChild(input)
         })
         controlEl.appendChild(inputsEl)
@@ -137,7 +148,7 @@ export class Form {
     }
 
     createSection(section) {
-        let sectionEl = this.createEl('section', [this.config.classes.section])
+        let sectionEl = this.createEl('section', [section.overwrite ? null : this.config.classes.section])
         let controls = section.controls
 
         if(section.title) {

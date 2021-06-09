@@ -7,15 +7,15 @@ export default
                 {
                     "label": "Фамилия",
                     "direction": "col" ,
-                    "inputs": [{"type": "text", "id": "last_name"}, {"type": "checkbox", "label": " ранее менялась", "id": "check"}]
+                    "inputs": [{"type": "text", "params": {"id": "last_name"}}, {"type": "checkbox", "label": " ранее менялась", "params": {"id": "check"}}]
                 },
                 {
                     "label": "Имя",
-                    "inputs": [{"type": "text", "id": "first_name"}]
+                    "inputs": [{"type": "text"}]
                 },
                 {
                     "label": "Отчество",
-                    "inputs": [{"type": "text", "id": "patronymic"}]
+                    "inputs": [{"type": "text"}]
                 },
             ]
 		},
@@ -23,11 +23,11 @@ export default
 			"controls": [
                 {
                     "label": "Фамилия латиницей",
-                    "inputs": [{"type": "text", "id": "last_name_lat"}]
+                    "inputs": [{"type": "text"}]
                 },
                 {
                     "label": "Имя латиницей",
-                    "inputs": [{"type": "text", "id": "first_name_lat"}]
+                    "inputs": [{"type": "text"}]
                 }
 			]	
 		},
@@ -36,18 +36,18 @@ export default
                 {
                     "label": "Дата рождения",
                     "inputs": [
-                        {"type": "select", "id": "day", "options": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 
-                        {"type": "select", "id": "month", "options": ['январь', 'февраль']}, 
-                        {"type": "select", "id": "year", "options": [2001, 2002, 2003, 2004, 2005, 2006]}
+                        {"type": "select", "options": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 
+                        {"type": "select", "options": ['январь', 'февраль']}, 
+                        {"type": "select", "options": [2001, 2002, 2003, 2004, 2005, 2006]}
                     ]
                 },
                 {
                     "label": "Семейное положение",
-                    "inputs": [{"type": "select", "id": "relationships", "options": ["Женат", "Замужем", "Помолвен", "Есть девушка / парень"]}]
+                    "inputs": [{"type": "select", "options": ["Женат", "Замужем", "Помолвен", "Есть девушка / парень"]}]
                 },
                 {
                     "label": "Образование",
-                    "inputs": [{"type": "select", "id": "education", "options": ["Высшее", "Среднее", "Нет"]}]
+                    "inputs": [{"type": "select", "options": ["Высшее", "Среднее", "Нет"]}]
                 }
 			]	
 		},
@@ -56,11 +56,11 @@ export default
 			"controls": [
                 {
                     "label": "Моб. телефон",
-                    "inputs": [{"type": "text", "placeholder": "+7", "id": "number"}]
+                    "inputs": [{"type": "text", "params": {"placeholder": "+7", "id": "number"}}]
                 },
                 {
                     "label": "Электронная почта",
-                    "inputs": [{"type": "email", "id": "email"}]
+                    "inputs": [{"type": "email"}]
                 }
 			]	
 		},
@@ -69,7 +69,7 @@ export default
             "controls": [
                 {
                     direction: 'col',
-                    "inputs": [{"type": "checkbox", "label": "ранее менялась"}, {"type": "button", "text": "Полететь на Марс"}]
+                    "inputs": [{"type": "checkbox", "label": "ранее менялась", "overwrite": true, classes: ['custom-checkbox']}, {"type": "button", "text": "Полететь на Марс"}]
                 }
             ]
         }

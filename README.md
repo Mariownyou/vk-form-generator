@@ -81,7 +81,7 @@
 {
     "label": "Фамилия",
     "direction": "col" ,
-    "inputs": [{"type": "text", "id": "last_name"}, {"type": "checkbox", "label": " ранее менялась", "id": "check"}]
+    "inputs": [{"type": "text"}, {"type": "checkbox", "label": " ранее менялась"}]
 },
 ```
 ```html
@@ -123,3 +123,5 @@ const config = {
     }
 }
 ```
+
+### Примеры

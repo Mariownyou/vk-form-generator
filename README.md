@@ -7,7 +7,7 @@
 
 ## Модуль
 
-**Подключение** 
+### Подключение 
 ```html
 <script type="module">
     import { Form } from './js/form.js'
@@ -17,7 +17,7 @@
 ```
 По-умолчанию форма атвоматически сгенерируется и добавиться к `body`, но это можно отключить.
 
-**Настройки**
+### Настройки
 
 Можно передать только что-то одно, тогда будут применены настройки по-умолчанию.
 ```html
@@ -157,11 +157,49 @@ const config = {
 ```
 
 ### Примеры
+Структура
+```js
+{
+    action: "url",
+    sections: [
+        {
+            title: string
+            controls: [
+                {
+                    label: string,
+                    direction: string // "col" || ""
+                    inputs: [
+                        {
+                            type: string,
+                            params: {}
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+
+```html
+<form class="form" action="url">
+    <section class="section">
+        <div class="form-control">
+            <label class="form-control__label" for="last_name">Фамилия</label>
+            <div class="form-control__inputs">
+                <input class="input" type="text" id="last_name" name="last_name" placeholder="">
+            </div>
+        </div>
+    </section>
+</form>
+```
+
+
+
 Комплексная форма
 
 **JSON**
 ```js
-export default
 {
 	"action": "url",
 	"sections": [
@@ -323,3 +361,5 @@ export default
     </section>
 </form>
 ```
+
+## Недостатки формата и кода

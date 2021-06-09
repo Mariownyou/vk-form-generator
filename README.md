@@ -5,6 +5,37 @@
 > Напишите код, который будет преобразовывать `JSON` с описанием контента формы — в готовую вёрстку.
 
 
+## Модуль
+
+**Подключение** 
+```html
+<script type="module">
+    import { Form } from './js/form.js'
+
+    const form = new Form("json")
+</script>
+```
+По-умолчанию форма атвоматически сгенерируется и добавиться к `body`, но это можно отключить.
+
+**Настройки**
+
+Можно передать только что-то одно, тогда будут применены настройки по-умолчанию.
+```html
+<script type="module">
+    import { Form } from './js/form.js'
+    const params {
+        config: cfg, // конфиг
+        generate: false, // рендерить форму или нет
+        parent: document.body // родитель формы
+    }
+
+    const form = new Form("json", params)
+    const html = form.html // Если понадобится просто html-код
+    console.log(html)
+</script>
+```
+
+
 ## Формат 
 Пример простой формы с одним полем ввода
 ```json
@@ -49,6 +80,7 @@
 6. select — {type: "select", options: [1, 2, 3, 4]}
 7. date — {type: "date"}
 8. email — {type: "email"}
+9. button — {type: "button"} // submit button
 ```
 
 ### Катсомные свойства

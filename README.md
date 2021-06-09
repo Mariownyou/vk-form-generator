@@ -38,7 +38,7 @@
 
 Формат не очень простой и интуитивный, но дает широкую кастомизацию. Разберем формат подробнее. Форма делится на секции. В каждой секции, есть несколько или один `form-contorl`. `form-control` состоит из `label` (опционально) и `inputs` — любое кол-во интпутов.
 
-### Список импутов и их параметров
+### Список импутов
 ```
 Во все импуты опцианально можно предать params, в котором находятся все валидные для данного тега атрибуты: params: {id: 12, value: 10}
 1. textfield — {type: "text"}
@@ -125,3 +125,169 @@ const config = {
 ```
 
 ### Примеры
+Комплексная форма
+
+**JSON**
+```js
+export default
+{
+	"action": "url",
+	"sections": [
+		{
+            "controls": [
+                {
+                    "label": "Фамилия",
+                    "direction": "col" ,
+                    "inputs": [{"type": "text", "params": {"id": "last_name"}}, {"type": "checkbox", "label": " ранее менялась", "params": {"id": "check"}}]
+                },
+                {
+                    "label": "Имя",
+                    "inputs": [{"type": "text"}]
+                },
+                {
+                    "label": "Отчество",
+                    "inputs": [{"type": "text"}]
+                },
+            ]
+		},
+        {
+			"controls": [
+                {
+                    "label": "Фамилия латиницей",
+                    "inputs": [{"type": "text"}]
+                },
+                {
+                    "label": "Имя латиницей",
+                    "inputs": [{"type": "text"}]
+                }
+			]	
+		},
+        {
+			"controls": [
+                {
+                    "label": "Дата рождения",
+                    "inputs": [
+                        {"type": "select", "options": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 
+                        {"type": "select", "options": ['январь', 'февраль']}, 
+                        {"type": "select", "options": [2001, 2002, 2003, 2004, 2005, 2006]}
+                    ]
+                },
+                {
+                    "label": "Семейное положение",
+                    "inputs": [{"type": "select", "options": ["Женат", "Замужем", "Помолвен", "Есть девушка / парень"]}]
+                },
+                {
+                    "label": "Образование",
+                    "inputs": [{"type": "select", "options": ["Высшее", "Среднее", "Нет"]}]
+                }
+			]	
+		},
+		{
+			"title": "Контактная информация",
+			"controls": [
+                {
+                    "label": "Моб. телефон",
+                    "inputs": [{"type": "text", "params": {"placeholder": "+7", "id": "number"}}]
+                },
+                {
+                    "label": "Электронная почта",
+                    "inputs": [{"type": "email"}]
+                }
+			]	
+		},
+        {
+            "classes": ['section_submit'],
+            "controls": [
+                {
+                    direction: 'col',
+                    "inputs": [{"type": "checkbox", "label": "ранее менялась", "overwrite": true, classes: ['custom-checkbox']}, {"type": "button", "text": "Полететь на Марс"}]
+                }
+            ]
+        }
+	]
+}
+```
+
+**Сгенерированный HTML**
+```html
+<form class="form" action="url">
+    <section class="section">
+        <div class="form-control"><label class="form-control__label">Фамилия</label>
+            <div class="form-control__inputs form-control__inputs_col"><input class="input" type="text"
+                    id="last_name"><label class="checkbox"><input class="input" type="checkbox" id="check"> ранее
+                    менялась</label></div>
+        </div>
+        <div class="form-control"><label class="form-control__label">Имя</label>
+            <div class="form-control__inputs"><input class="input" type="text"></div>
+        </div>
+        <div class="form-control"><label class="form-control__label">Отчество</label>
+            <div class="form-control__inputs"><input class="input" type="text"></div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="form-control"><label class="form-control__label">Фамилия латиницей</label>
+            <div class="form-control__inputs"><input class="input" type="text"></div>
+        </div>
+        <div class="form-control"><label class="form-control__label">Имя латиницей</label>
+            <div class="form-control__inputs"><input class="input" type="text"></div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="form-control"><label class="form-control__label">Дата рождения</label>
+            <div class="form-control__inputs"><select class="select">
+                    <option class="select__option">1</option>
+                    <option class="select__option">2</option>
+                    <option class="select__option">3</option>
+                    <option class="select__option">4</option>
+                    <option class="select__option">5</option>
+                    <option class="select__option">6</option>
+                    <option class="select__option">7</option>
+                    <option class="select__option">8</option>
+                    <option class="select__option">9</option>
+                    <option class="select__option">10</option>
+                </select><select class="select">
+                    <option class="select__option">январь</option>
+                    <option class="select__option">февраль</option>
+                </select><select class="select">
+                    <option class="select__option">2001</option>
+                    <option class="select__option">2002</option>
+                    <option class="select__option">2003</option>
+                    <option class="select__option">2004</option>
+                    <option class="select__option">2005</option>
+                    <option class="select__option">2006</option>
+                </select></div>
+        </div>
+        <div class="form-control"><label class="form-control__label">Семейное положение</label>
+            <div class="form-control__inputs"><select class="select">
+                    <option class="select__option">Женат</option>
+                    <option class="select__option">Замужем</option>
+                    <option class="select__option">Помолвен</option>
+                    <option class="select__option">Есть девушка / парень</option>
+                </select></div>
+        </div>
+        <div class="form-control"><label class="form-control__label">Образование</label>
+            <div class="form-control__inputs"><select class="select">
+                    <option class="select__option">Высшее</option>
+                    <option class="select__option">Среднее</option>
+                    <option class="select__option">Нет</option>
+                </select></div>
+        </div>
+    </section>
+    <section class="section">
+        <h3 class="section__title">Контактная информация</h3>
+        <div class="form-control"><label class="form-control__label">Моб. телефон</label>
+            <div class="form-control__inputs"><input class="input" type="text" placeholder="+7" id="number"></div>
+        </div>
+        <div class="form-control"><label class="form-control__label">Электронная почта</label>
+            <div class="form-control__inputs"><input class="input" type="email"></div>
+        </div>
+    </section>
+    <section class="section section_submit">
+        <div class="form-control">
+            <div class="form-control__inputs form-control__inputs_col"><label class="none"><input
+                        class="none custom-checkbox" type="checkbox">ранее менялась</label><button class="submit-button"
+                    type="submit">Полететь на Марс</button></div>
+        </div>
+    </section>
+</form>
+```

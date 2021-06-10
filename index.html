@@ -15,12 +15,36 @@
         import { Form } from './js/form.js'
         import json from './js/json.js'
 
-        const form = new Form(json)
+        const form = new Form(json, {parent: document.getElementById('output')})
         console.log(form.html)
+
+        const input = document.getElementById('input')
+        input.innerHTML = JSON.stringify(form.form, undefined, 2) 
     </script>
 
 </head>
 <body>
+    <header class="nav">
+        <h1 class="nav__title">
+            <a href="https://vk.com/@vkteam-testovoe-zadanie-frontend-infrastruktura">
+                Тестовое задание для стажёра в команду фронтенд-инфраструктуры
+            </a>
+        </h1>
+    </header>
+    <main class="container">
+        <section class="columns">
+            <div class="col">
+                <h2 class="col__title">JSON</h2>
+                <pre id="input"></pre>
+            </div>
+            <div class="col">
+                <h2 class="col__title">Форма</h2>
+                <div class="output" id="output"></div>
+            </div>
+        </section>
+    </main>
+    <footer>
 
+    </footer>
 </body>
 </html>
